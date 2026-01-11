@@ -4825,10 +4825,10 @@ class Formula
       @disable_date = T.let(Date.parse(date), T.nilable(Date))
 
       if T.must(@disable_date) > Date.today
-        @deprecation_reason = T.let(because, T.nilable(T.any(String, Symbol)))
-        @deprecation_replacement_formula = T.let(replacement_formula.presence || replacement, T.nilable(String))
-        @deprecation_replacement_cask = T.let(replacement_cask.presence || replacement, T.nilable(String))
-        @deprecated = T.let(true, T.nilable(T::Boolean))
+        @deprecation_reason ||= T.let(because, T.nilable(T.any(String, Symbol)))
+        @deprecation_replacement_formula ||= T.let(replacement_formula.presence || replacement, T.nilable(String))
+        @deprecation_replacement_cask ||= T.let(replacement_cask.presence || replacement, T.nilable(String))
+        @deprecated ||= T.let(true, T.nilable(T::Boolean))
         return
       end
 

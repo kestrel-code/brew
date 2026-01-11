@@ -662,10 +662,10 @@ module Cask
       @disable_date = Date.parse(date)
 
       if @disable_date > Date.today
-        @deprecation_reason = because
-        @deprecation_replacement_formula = replacement_formula.presence || replacement
-        @deprecation_replacement_cask = replacement_cask.presence || replacement
-        @deprecated = true
+        @deprecation_reason ||= because
+        @deprecation_replacement_formula ||= replacement_formula.presence || replacement
+        @deprecation_replacement_cask ||= replacement_cask.presence || replacement
+        @deprecated ||= true
         return
       end
 
